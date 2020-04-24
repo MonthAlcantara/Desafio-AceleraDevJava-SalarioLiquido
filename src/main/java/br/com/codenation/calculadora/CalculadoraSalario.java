@@ -2,7 +2,6 @@ package br.com.codenation.calculadora;
 
 public class CalculadoraSalario {
     private static final double SALARIO_MINIMO = 1039.00;
-
     private static final double DESCONTO_INSS_FAIXA01 = 0.08;
     private static final double DESCONTO_INSS_FAIXA02 = 0.09;
     private static final double DESCONTO_INSS_FAIXA03 = 0.11;
