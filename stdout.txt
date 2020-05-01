@@ -1,10 +1,10 @@
-> Task :compileJava
+> Task :compileJava UP-TO-DATE
 > Task :processResources NO-SOURCE
-> Task :classes
+> Task :classes UP-TO-DATE
 > Task :compileTestJava UP-TO-DATE
 > Task :processTestResources NO-SOURCE
 > Task :testClasses UP-TO-DATE
 > Task :test
 
-BUILD SUCCESSFUL in 11s
-3 actionable tasks: 2 executed, 1 up-to-date
+BUILD SUCCESSFUL in 8s
+3 actionable tasks: 1 executed, 2 up-to-date

@@ -1,6 +1,6 @@
 package br.com.codenation.calculadora;
 
-public class CalculadoraSalario implements Descontos{
+public class CalculadoraSalario implements Descontos {
     private static final double SALARIO_MINIMO = 1039.00;
 
     public long calcularSalarioLiquido(double salarioBase) {
@@ -12,8 +12,8 @@ public class CalculadoraSalario implements Descontos{
     private double calcularDescontoInss(double salarioBase) {
         if (!(salarioBase > SALARIO_MINIMO) || !(salarioBase <= 1500.00)) {
             return (salarioBase > 1500.00 && salarioBase <= 4000.00)
-                    ? salarioBase - (salarioBase * DESCONTO_INSS_FAIXA02)
-                    : salarioBase - (salarioBase * DESCONTO_INSS_FAIXA03);
+                    ? salarioBase * (1 - DESCONTO_INSS_FAIXA02)
+                    : salarioBase * (1 - DESCONTO_INSS_FAIXA03);
         }
         return salarioBase - (salarioBase * DESCONTO_INSS_FAIXA01);
     }
@@ -24,8 +24,8 @@ public class CalculadoraSalario implements Descontos{
                 return salarioBase;
             }
             return (salarioBase > 3000.00 && salarioBase <= 6000.00)
-                    ? salarioBase - (salarioBase * DESCONTO_IRRF_FAIXA01)
-                    : salarioBase - (salarioBase * DESCONTO_IRRF_FAIXA02);
+                    ? salarioBase * (1 - DESCONTO_IRRF_FAIXA01)
+                    : salarioBase * (1 - DESCONTO_IRRF_FAIXA02);
         } else {
             return 0.00;
         }
@@ -38,5 +38,4 @@ public class CalculadoraSalario implements Descontos{
     private boolean verificarIsencaoIrrf(double salariobase) {
         return salariobase <= SALARIO_MINIMO;
     }
-
 }
