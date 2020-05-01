@@ -15,31 +15,33 @@ public class CalculadoraSalario {
     }
 
     private double calcularDescontoInss(double salarioBase) {
-        if (salarioBase > SALARIO_MINIMO && salarioBase <= 1500.00) {
-            return salarioBase -= salarioBase * DESCONTO_INSS_FAIXA01;
+        if (!(salarioBase > SALARIO_MINIMO) || !(salarioBase <= 1500.00)) {
+            return (salarioBase > 1500.00 && salarioBase <= 4000.00)
+                    ? salarioBase - (salarioBase * DESCONTO_INSS_FAIXA02)
+                    : salarioBase - (salarioBase * DESCONTO_INSS_FAIXA03);
         }
-        return (salarioBase > 1500.00 && salarioBase <= 4000.00) ? (salarioBase -= salarioBase * DESCONTO_INSS_FAIXA02) : (salarioBase -= salarioBase * DESCONTO_INSS_FAIXA03);
+        return salarioBase - (salarioBase * DESCONTO_INSS_FAIXA01);
     }
 
     private double calcularDescontoIrrf(double salarioBase) {
-        if (verificarIsencaoIrrf(salarioBase)) {
-            return 0.00;
-        } else {
+        if (!verificarIsencaoIrrf(salarioBase)) {
             if (salarioBase <= 3000.00) {
                 return salarioBase;
             }
-            return (salarioBase > 3000.00 && salarioBase <= 6000.00) ? (salarioBase -= salarioBase * DESCONTO_IRRF_FAIXA01) : (salarioBase -= salarioBase * DESCONTO_IRRF_FAIXA02);
+            return (salarioBase > 3000.00 && salarioBase <= 6000.00)
+                    ? salarioBase - (salarioBase * DESCONTO_IRRF_FAIXA01)
+                    : salarioBase - (salarioBase * DESCONTO_IRRF_FAIXA02);
+        } else {
+            return 0.00;
         }
     }
 
-    private void validarSalarioInformado(double salarioBase) throws NullPointerException{
-        if ((Double) salarioBase == null) {
-            throw new NullPointerException();
-        }
+    private void validarSalarioInformado(Double salarioBase) throws NullPointerException {
+        if (salarioBase == null) throw new NullPointerException();
     }
 
     private boolean verificarIsencaoIrrf(double salariobase) {
-        return (salariobase <= SALARIO_MINIMO) ? true : false;
+        return salariobase <= SALARIO_MINIMO;
     }
 
 }
