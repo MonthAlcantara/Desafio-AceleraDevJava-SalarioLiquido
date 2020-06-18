@@ -1,15 +1,10 @@
 package br.com.codenation.calculadora;
 
-public class CalculadoraSalario {
+public class CalculadoraSalario implements DescontoSalarial{
+
     private final double SALARIO_MINIMO = 1039.00;
-    private final double DESCONTO_INSS_FAIXA01 = 0.08;
-    private final double DESCONTO_INSS_FAIXA02 = 0.09;
-    private final double DESCONTO_INSS_FAIXA03 = 0.11;
-    private final double DESCONTO_IRRF_FAIXA01 = 0.075;
-    private final double DESCONTO_IRRF_FAIXA02 = 0.15;
 
     public long calcularSalarioLiquido(double salarioBase) {
-        validarSalarioInformado(salarioBase);
         double salarioDescontado = calcularDescontoInss(salarioBase);
         return Math.round(calcularDescontoIrrf(salarioDescontado));
     }
