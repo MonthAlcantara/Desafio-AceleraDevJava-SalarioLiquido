@@ -1,6 +1,6 @@
 package br.com.codenation.calculadora;
 
-public class CalculadoraSalario implements DescontoSalarial{
+public class CalculadoraSalario implements DescontoSalarial {
 
     private final double SALARIO_MINIMO = 1039.00;
 
